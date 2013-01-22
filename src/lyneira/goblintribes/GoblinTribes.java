@@ -1,6 +1,10 @@
 package lyneira.goblintribes;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import net.minecraft.item.Item;
+import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -18,10 +22,12 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
  * 
  * @author Lyneira
  */
-@Mod(modid = "GoblinTribes", name = "Goblin Tribes", version = "0.0.1")
+@Mod(modid = GoblinTribes.ID, name = "Goblin Tribes", version = GoblinTribes.VERSION)
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 public class GoblinTribes {
 
+	public static final String ID = "GoblinTribes";
+	public static final String VERSION = "0.0.1";
 	private final static Item goblinSpawnEggItem = new GoblinSpawnEggItem(27900);
 
 	@Instance("GoblinTribes")
@@ -31,9 +37,12 @@ public class GoblinTribes {
 	@SidedProxy(clientSide = "lyneira.goblintribes.client.ClientProxy", serverSide = "lyneira.goblintribes.CommonProxy")
 	public static CommonProxy proxy;
 
+	public static Logger logger;
+	
 	@PreInit
 	public void preInit(FMLPreInitializationEvent event) {
-		// Stub Method
+		logger = Logger.getLogger(ID);
+		logger.setParent(FMLLog.getLogger());
 	}
 
 	@Init
