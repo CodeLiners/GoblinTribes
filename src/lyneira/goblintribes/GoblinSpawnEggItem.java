@@ -1,5 +1,7 @@
 package lyneira.goblintribes;
 
+import java.util.logging.Level;
+
 import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -30,7 +32,7 @@ public class GoblinSpawnEggItem extends Item {
 	@Override
 	public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, int par4, int par5, int par6, int par7, float par8, float par9, float par10)
     {
-		System.out.println(this.getItemName() + " was rightclicked: " + par4 + ", " + par5 + ", " + par6 + ", " + par7 + ", " + par8 + ", " + par9 + ", " + par10 + ", ");
+		GoblinTribes.logger.log(Level.INFO, this.getItemName() + " was rightclicked: " + par4 + ", " + par5 + ", " + par6 + ", " + par7 + ", " + par8 + ", " + par9 + ", " + par10);
         return true;
     }
 }
